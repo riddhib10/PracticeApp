@@ -28,9 +28,9 @@ function LinkedFacilitiesScreen() {
 
 const renderItem = ({ item }) => (
     <View style = {styles.container}>
-      <Text >Name: {item.employee_name}</Text>
-      <Text >Age: {item.employee_age}</Text>
-      <Text >Salary: ${item.employee_salary}</Text>
+      <Text>Name: {item.employee_name}</Text>
+      <Text>Age: {item.employee_age}</Text>
+      <Text>Salary: ${item.employee_salary}</Text>
     </View>
   );
 

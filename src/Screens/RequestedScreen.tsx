@@ -1,15 +1,91 @@
-import React from 'react';
-import {View, Text} from 'react-native'
+import React, { useEffect, useState } from 'react';
+import { View, Text, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
 
-function ConsentsScreen(){
+const dummyData = require('../Services/dummyData.json');
 
-return(
-<View>
-    <Text>
-        hello
-    </Text>
-</View>
-);
+function RequestedScreen() {
+  const [data, setData] = useState(null);
+  const [selectedData, setSelectedData] = useState([]);
+  const [activeTab, setActiveTab] = useState('All');
 
+  useEffect(() => {
+    const organizedD = organizeDataSimple(dummyData);
+    setData(organizedD);
+    setSelectedData(Object.values(organizedD).flat());
+  }, []);
+
+  const organizeDataSimple = (data) => {
+    const organizedData = {};
+    for (const item of data) {
+      if (!organizedData[item.status]) {
+        organizedData[item.status] = [];
+      }
+      organizedData[item.status].push(item);
+    }
+    return organizedData;
+  };
+
+  const selectedTab = (value) => {
+    setActiveTab(value);
+    if (value === 'All') {
+      setSelectedData(Object.values(data).flat());
+    } else {
+      setSelectedData(data[value] || []);
+    }
+  };
+
+  return (
+    <View>
+      <View style={styles.container}>
+        {['All', 'Pending', 'Denied', 'Expired'].map((Tab) => (
+          <TouchableOpacity
+             key={Tab}
+            style={[styles.radioButton, activeTab === Tab && styles.activeTab]}
+            onPress={() => selectedTab(Tab)}>
+            <Text>{Tab}</Text>
+          </TouchableOpacity>
+        ))}
+      </View>
+      <ScrollView>
+        <View>
+          {selectedData.map((item, index) => (
+            <View key={index} style={styles.dataItem}>
+              <Text>{item.hospitalName}</Text>
+              <Text>{item.requestType}</Text>
+              <Text>{item.dateOfRequest}</Text>
+              <Text>{item.status}</Text>
+            </View>
+          ))}
+        </View>
+      </ScrollView>
+    </View>
+  );
 }
-export default ConsentsScreen;
+
+const styles = StyleSheet.create({
+  container: {
+    padding: 10,
+    borderRadius: 5,
+    elevation: 5,
+    margin: 10,
+    flexDirection: 'row',
+  },
+  radioButton: {
+    paddingHorizontal: 27,
+    paddingVertical: 10,
+    borderRadius: 10,
+    alignItems: 'center',
+  },
+  activeTab: {
+    backgroundColor: '#ccc',
+  },
+  dataItem: {
+    borderColor: '#ccc',
+    borderRadius: 5,
+    padding :5,
+    borderWidth:2,
+    margin: 1,
+  },
+});
+
+export default RequestedScreen;
