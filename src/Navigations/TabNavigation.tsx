@@ -9,7 +9,7 @@ function TabNavigation(){
 
 return(
     <Tab.Navigator>
-        <Tab.Screen name="HomePage" component={HomePageScreen} />
+        <Tab.Screen name="HomePageScreen" component={HomePageScreen} />
         <Tab.Screen name="Linked Facilities" component={LinkedFacilitiesScreen} />
         <Tab.Screen name="Consents" component={ConsentsScreen} />
     </Tab.Navigator>
