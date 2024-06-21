@@ -42,7 +42,7 @@ const HomePage = ({ navigation, route }) => {
     );
     return () => backHandler.remove();
   }, []);
-
+console.log(userData);
   if (!userData) {
     return (
       <View style={styles.container}>
@@ -112,6 +112,8 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
     marginBottom: 10,
+    color: '#000000',
+
   },
 });
 

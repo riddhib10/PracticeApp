@@ -15,11 +15,11 @@ return(
     <View style={styles.container}>
         <TouchableOpacity style={[styles.radioButton, selectedVal === 'Requested' && styles.selectedButton]}
         onPress = {()=> Selection('Requested') }>
-            <Text> hello </Text>
+            <Text> Requested </Text>
         </TouchableOpacity>
         <TouchableOpacity style={[styles.radioButton, selectedVal === 'Approved' && styles.selectedButton ]}
         onPress = {()=> Selection('Approved') }>
-           <Text> hello </Text>
+           <Text> Approved </Text>
         </TouchableOpacity>
     </View>
     <View>
@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
 
   },
 radioButton: {
-    paddingHorizontal: 75,
+    paddingHorizontal: 57,
     paddingVertical: 10,
     borderRadius: 10,
     borderWidth: 2,

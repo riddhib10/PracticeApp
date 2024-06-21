@@ -15,7 +15,7 @@ const SignOut = () => {
             try {
               await signOut();
               console.log("call");
-            navigation.navigate('LoginPage');
+            navigation.navigate('loginPage');
               Alert.alert('Logged Out', 'You have been logged out successfully.');
             } catch (error) {
               Alert.alert('Error', 'An error occurred while logging out.');

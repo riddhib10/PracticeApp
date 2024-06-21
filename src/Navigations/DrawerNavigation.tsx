@@ -15,7 +15,6 @@ return(
 
     <Drawer.Screen name='Home' component={TabNavigation}/>
     <Drawer.Screen name='HomePageScreen' component={HomePageScreen} />
-    <Drawer.Screen name='LoginPage' component={LoginPage} />
     <Drawer.Screen name='SignOut' component={SignOut} />
     <Drawer.Screen name='Homepage1' component={HomePageScreen} />
     <Drawer.Screen name='Homepage2' component={HomePageScreen} />
